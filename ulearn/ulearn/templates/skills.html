@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>ТОП-20 навыков Бэкенд разработчика</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Навык</th>
+                <th>Частота упоминаний</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in top_skills %}
+                <tr>
+                    <td>{{ skill.skill }}</td>
+                    <td>{{ skill.frequency }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

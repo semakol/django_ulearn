@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Востребованность Бэкенд разработчиков</h2>
+    <h3>Динамика уровня зарплат по годам</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Год</th>
+                <th>Средняя зарплата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in salary_data %}
+                <tr>
+                    <td>{{ item.year }}</td>
+                    <td>{{ item.avg_salary }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Динамика количества вакансий по годам</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Год</th>
+                <th>Количество вакансий</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in job_count %}
+                <tr>
+                    <td>{{ item.year }}</td>
+                    <td>{{ item.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

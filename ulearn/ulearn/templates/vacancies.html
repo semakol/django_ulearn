@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Последние вакансии Бэкенд разработчика</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Название вакансии</th>
+                <th>Описание</th>
+                <th>Навыки</th>
+                <th>Компания</th>
+                <th>Оклад</th>
+                <th>Регион</th>
+                <th>Дата публикации</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacancy in vacancies %}
+                <tr>
+                    <td>{{ vacancy.title }}</td>
+                    <td>{{ vacancy.description }}</td>
+                    <td>{{ vacancy.skills }}</td>
+                    <td>{{ vacancy.company }}</td>
+                    <td>{{ vacancy.salary }}</td>
+                    <td>{{ vacancy.region }}</td>
+                    <td>{{ vacancy.published_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
