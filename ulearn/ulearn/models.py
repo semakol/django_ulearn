@@ -1,10 +1,24 @@
+from idlelib.configdialog import tracers
+
 from django.db import models
 
-class Product(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+class Vacancies(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, null=True)
+    key_skills = models.CharField(max_length=1000, null=True)
+    salary_from = models.FloatField(null=True)
+    salary_to = models.FloatField(null=True)
+    salary_currency = models.CharField(max_length=10, null=True)
+    area_name = models.CharField(max_length=100, null=True)
+    published_at = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.name
+
+class ExchangeRate(models.Model):
+    id = models.AutoField(primary_key=True)
+    currency = models.JSONField(null=True)
+    date = models.DateField(unique=True)
+
+    def __str__(self):
+        return self.currency
