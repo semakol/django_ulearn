@@ -75,3 +75,13 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+.skill {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+}

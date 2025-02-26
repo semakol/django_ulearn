@@ -2,39 +2,47 @@
 
 {% block content %}
     <h2>География вакансий Бэкенд разработчиков</h2>
-    <h3>Уровень зарплат по городам</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Город</th>
-                <th>Средняя зарплата</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in salary_by_city %}
+    <h2>Уровень зарплат по городам</h2>
+<table>
+    <tr>
+        <th>
+            <table border="1">
                 <tr>
-                    <td>{{ item.city }}</td>
-                    <td>{{ item.avg_salary }}</td>
+                    <th>Город</th>
+                    <th>Средняя зарплата</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% for city, avg in salary_by_city %}
+                <tr>
+                    <td>{{ city }}</td>
+                    <td>{{ avg|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </th>
+        <th><img src="data:image/png;base64,{{ salary_by_city_graph }}" width="600" height="400"></th>
+    </tr>
+</table>
 
-    <h3>Доля вакансий по городам</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Город</th>
-                <th>Доля вакансий</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in vacancy_share_by_city %}
+<h2>Доля вакансий по городам</h2>
+<table>
+    <tr>
+        <th>
+            <table border="1">
                 <tr>
-                    <td>{{ item.city }}</td>
-                    <td>{{ item.share }}%</td>
+                    <th>Город</th>
+                    <th>Доля (%)</th>
+                    <th>Количество</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% for city, percentage in city_percentages %}
+                <tr>
+                    <td>{{ city }}</td>
+                    <td>{{ percentage.per|floatformat:2 }}%</td>
+                    <td>{{ percentage.count }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </th>
+        <th><img src="data:image/png;base64,{{ city_percentages_graph }}" width="600" height="400"></th>
+    </tr>
+</table>
 {% endblock %}

@@ -9,6 +9,5 @@ urlpatterns = [
     path('geography/', geography, name='geography'),
     path('skills/', skills, name='skills'),
     path('vacancies/', recent_vacancies, name='vacancies'),
-    # path('products/', product_list, name='product_list'),
     path('admin/', admin.site.urls),
 ]

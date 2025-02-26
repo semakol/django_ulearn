@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>ТОП-20 навыков Бэкенд разработчика</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Навык</th>
-                <th>Частота упоминаний</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for skill in top_skills %}
-                <tr>
-                    <td>{{ skill.skill }}</td>
-                    <td>{{ skill.frequency }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+    <h2>ТОП-20 навыков по годам для Бэкенд разработчиков</h2>
+<div class="skills">
+    {% for year, skills in top_20_skills_by_year %}
+    <table class="skill" border="1">
+        <tr>
+            <th colspan="2">{{ year }}</th>
+        </tr>
+
+        {% for skill, count in skills.items %}
+        <tr>
+            <td>{{ skill }}</td>
+            <td>{{ count }}</td>
+        </tr>
+
+        {% endfor %}
     </table>
+    {% endfor %}
+</div>
+<img src="data:image/png;base64,{{ top_20_skills_by_year_graph }}" >
 {% endblock %}

@@ -2,39 +2,45 @@
 
 {% block content %}
     <h2>Востребованность Бэкенд разработчиков</h2>
-    <h3>Динамика уровня зарплат по годам</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Год</th>
-                <th>Средняя зарплата</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in salary_data %}
+    <h2>Динамика уровня зарплат по годам</h2>
+<table>
+    <tr>
+        <th>
+            <table border="1">
                 <tr>
-                    <td>{{ item.year }}</td>
-                    <td>{{ item.avg_salary }}</td>
+                    <th>Год</th>
+                    <th>Средняя зарплата</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% for year, salary in avg_salary_by_year %}
+                <tr>
+                    <td>{{ year }}</td>
+                    <td>{{ salary|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </th>
+        <th><img src="data:image/png;base64,{{ avg_salary_by_year_graph }}" width="600" height="400"></th>
+    </tr>
+</table>
 
-    <h3>Динамика количества вакансий по годам</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Год</th>
-                <th>Количество вакансий</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in job_count %}
+<h2>Динамика количества вакансий по годам</h2>
+<table>
+    <tr>
+        <th>
+            <table border="1">
                 <tr>
-                    <td>{{ item.year }}</td>
-                    <td>{{ item.count }}</td>
+                    <th>Год</th>
+                    <th>Количество</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% for year, count in vacancies_by_years %}
+                <tr>
+                    <td>{{ year }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </th>
+        <th><img src="data:image/png;base64,{{ vacancies_by_years_graph }}" width="600" height="400"></th>
+    </tr>
+</table>
 {% endblock %}

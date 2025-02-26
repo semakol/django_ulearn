@@ -25,5 +25,9 @@ try:
                     conn.commit()
                     print("Пользователь добавлен!")
 
+                cur.execute(
+                    "INSERT INTO ulearn_statistics (name, data) VALUES (%s, %s)",
+                    ("avg_salary_by_city", '{}'))
+
 except psycopg2.Error as e:
     print("Ошибка:", e)

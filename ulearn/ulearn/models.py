@@ -1,4 +1,3 @@
-from idlelib.configdialog import tracers
 
 from django.db import models
 
@@ -22,3 +21,9 @@ class ExchangeRate(models.Model):
 
     def __str__(self):
         return self.currency
+
+class Statistics(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, unique=True)
+    data = models.JSONField()
+    graph = models.TextField(null=True)
